@@ -1,0 +1,99 @@
+<div id="djalil-web-acc-widget-container">
+  <!-- Toggle Button -->
+  <button id="djalil-web-acc-toggle-btn" [attr.aria-label]="t.title" (click)="togglePanel()">
+    <i class="fas fa-universal-access"></i>
+  </button>
+
+  <!-- Settings Panel -->
+  <div id="djalil-web-acc-panel" [class.active]="isOpen">
+    <!-- Header -->
+    <div class="djalil-web-acc-header">
+      <h3>{{ t.title }}</h3>
+      <div class="djalil-web-acc-header-actions">
+        <div class="djalil-web-acc-lang-toggle">
+          <button
+            class="djalil-web-acc-lang-btn"
+            [class.active]="djalilWebAcc.currentLang === 'ar'"
+            (click)="changeLanguage('ar')"
+          >
+            AR
+          </button>
+          <button
+            class="djalil-web-acc-lang-btn"
+            [class.active]="djalilWebAcc.currentLang === 'en'"
+            (click)="changeLanguage('en')"
+          >
+            EN
+          </button>
+        </div>
+        <button class="djalil-web-acc-close-btn" aria-label="Close" (click)="togglePanel()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="djalil-web-acc-content">
+      <!-- Feature Cards Grid -->
+      <div class="djalil-web-acc-grid">
+        @for (feature of features; track feature.id) {
+          <div
+            class="djalil-web-acc-card"
+            [class.active]="isFeatureActive(feature.id)"
+            (click)="toggleFeature(feature.id)"
+          >
+            <div class="djalil-web-acc-card-icon">
+              <i class="fas" [ngClass]="feature.icon"></i>
+            </div>
+            <div class="djalil-web-acc-card-label">{{ t[feature.labelKey] }}</div>
+          </div>
+        }
+      </div>
+
+      <!-- Sliders -->
+      @for (slider of sliders; track slider.id) {
+        <div class="djalil-web-acc-slider-group">
+          <div class="djalil-web-acc-slider-header">
+            <span class="djalil-web-acc-slider-label">{{ t[slider.labelKey] }}</span>
+            <span class="djalil-web-acc-slider-value">{{ getSliderDisplay(slider.id) }}</span>
+          </div>
+          <div class="djalil-web-acc-slider-controls">
+            <button class="djalil-web-acc-slider-btn" (click)="adjustSlider(slider.id, 'decrease')">
+              <i class="fas fa-minus"></i>
+            </button>
+            <input
+              type="range"
+              class="djalil-web-acc-slider"
+              [min]="slider.min"
+              [max]="slider.max"
+              [value]="getSliderValue(slider.id)"
+              (input)="onSliderInput(slider.id, $event)"
+            />
+            <button class="djalil-web-acc-slider-btn" (click)="adjustSlider(slider.id, 'increase')">
+              <i class="fas fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Footer -->
+    <div class="djalil-web-acc-footer">
+      <button class="djalil-web-acc-btn djalil-web-acc-btn-reset" (click)="resetSettings()">
+        <i class="fas fa-undo"></i>
+        <span>{{ t.reset }}</span>
+      </button>
+    </div>
+
+    <div class="djalil-web-acc-powered-by">
+      {{ t.poweredBy }}
+      <a
+        href="https://www.linkedin.com/in/achref-abdeljalil-179aa5136/"
+        target="_blank"
+        rel="noopener"
+      >
+        Accessibility Widget
+      </a>
+    </div>
+  </div>
+</div>

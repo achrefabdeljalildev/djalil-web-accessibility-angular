@@ -1,0 +1,373 @@
+/* ============================
+   Widget Container
+   ============================ */
+#djalil-web-acc-widget-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+/* Toggle Button */
+#djalil-web-acc-toggle-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 24px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ============================
+   Panel
+   ============================ */
+#djalil-web-acc-panel {
+  position: absolute;
+  bottom: 76px;
+  right: 0;
+  width: 380px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 120px);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  display: none;
+  overflow: hidden;
+
+  &.active {
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s ease;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-height: 700px) {
+  #djalil-web-acc-panel {
+    bottom: 10px;
+    max-height: calc(100vh - 80px);
+  }
+}
+
+@media (max-width: 420px) {
+  #djalil-web-acc-panel {
+    width: calc(100vw - 40px);
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+/* ============================
+   Header
+   ============================ */
+.djalil-web-acc-header {
+  background: #f8fafc;
+  padding: 20px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+  }
+}
+
+.djalil-web-acc-header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.djalil-web-acc-lang-toggle {
+  display: flex;
+  background: #e5e7eb;
+  border-radius: 8px;
+  padding: 2px;
+}
+
+.djalil-web-acc-lang-btn {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s;
+
+  &.active {
+    background: white;
+    color: #1f2937;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.djalil-web-acc-close-btn {
+  background: none;
+  border: none;
+  color: #6b7280;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #e5e7eb;
+    color: #1f2937;
+  }
+}
+
+/* ============================
+   Content
+   ============================ */
+.djalil-web-acc-content {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 380px);
+}
+
+@media (max-height: 700px) {
+  .djalil-web-acc-content {
+    padding: 15px;
+    max-height: calc(100vh - 340px);
+  }
+}
+
+/* ============================
+   Grid & Cards
+   ============================ */
+.djalil-web-acc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.djalil-web-acc-card {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #2563eb;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+  }
+
+  &.active {
+    background: #dbeafe;
+    border-color: #2563eb;
+
+    .djalil-web-acc-card-icon {
+      color: #2563eb;
+    }
+  }
+}
+
+.djalil-web-acc-card-icon {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+.djalil-web-acc-card-label {
+  font-size: 13px;
+  color: #1f2937;
+  font-weight: 500;
+}
+
+/* ============================
+   Sliders
+   ============================ */
+.djalil-web-acc-slider-group {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.djalil-web-acc-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.djalil-web-acc-slider-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.djalil-web-acc-slider-value {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.djalil-web-acc-slider-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.djalil-web-acc-slider-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #1f2937;
+
+  &:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+  }
+}
+
+.djalil-web-acc-slider {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #e5e7eb;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #2563eb;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #2563eb;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ============================
+   Footer
+   ============================ */
+.djalil-web-acc-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.djalil-web-acc-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.djalil-web-acc-btn-reset {
+  background: #ef4444;
+  color: white;
+
+  &:hover {
+    background: #dc2626;
+  }
+}
+
+.djalil-web-acc-powered-by {
+  padding: 15px 20px;
+  background: #f1f5f9;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  font-size: 12px;
+  color: #64748b;
+  border-radius: 0 0 16px 16px;
+
+  a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* ============================
+   Responsive
+   ============================ */
+@media (max-width: 420px) {
+  .djalil-web-acc-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .djalil-web-acc-slider-group {
+    padding: 12px;
+  }
+
+  .djalil-web-acc-content {
+    padding: 15px;
+  }
+}

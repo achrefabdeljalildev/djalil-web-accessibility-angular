@@ -1,0 +1,197 @@
+/* ============================
+   Global Accessibility Feature Styles
+   These must be global (not encapsulated) since they
+   apply body-level classes to the entire page.
+   ============================ */
+
+/* Dyslexia Font */
+body.djalil-web-acc-dyslexia *:not([class*='fa']) {
+  font-family: 'Lexend', Arial, sans-serif !important;
+}
+
+/* Highlight Links */
+body.djalil-web-acc-highlight-links a {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 2px !important;
+}
+
+/* Hide Images */
+body.djalil-web-acc-hide-images img {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Highlight Headings */
+body.djalil-web-acc-highlight-headings h1,
+body.djalil-web-acc-highlight-headings h2,
+body.djalil-web-acc-highlight-headings h3,
+body.djalil-web-acc-highlight-headings h4,
+body.djalil-web-acc-highlight-headings h5,
+body.djalil-web-acc-highlight-headings h6 {
+  position: relative !important;
+  padding-left: 20px !important;
+}
+
+body.djalil-web-acc-highlight-headings h1::before,
+body.djalil-web-acc-highlight-headings h2::before,
+body.djalil-web-acc-highlight-headings h3::before,
+body.djalil-web-acc-highlight-headings h4::before,
+body.djalil-web-acc-highlight-headings h5::before,
+body.djalil-web-acc-highlight-headings h6::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background: #2563eb !important;
+}
+
+/* High Contrast */
+body.djalil-web-acc-high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+body.djalil-web-acc-high-contrast * {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+body.djalil-web-acc-high-contrast a {
+  color: #ffff00 !important;
+}
+
+body.djalil-web-acc-high-contrast button {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+/* Dark Mode */
+body.djalil-web-acc-dark-mode {
+  background: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+body.djalil-web-acc-dark-mode * {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+  border-color: #444 !important;
+}
+
+body.djalil-web-acc-dark-mode a {
+  color: #66b3ff !important;
+}
+
+/* Focus Outline */
+body.djalil-web-acc-focus-outline *:focus {
+  outline: 6px solid #ff0000 !important;
+  outline-offset: 6px !important;
+}
+
+/* Reduce Motion */
+body.djalil-web-acc-reduce-motion * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Large Cursor */
+body.djalil-web-acc-cursor-size * {
+  cursor:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'><path fill='black' stroke='white' stroke-width='2' d='M8 8 L28 20 L20 24 L24 36 L20 38 L16 26 L8 30 Z'/></svg>")
+      0 0,
+    auto !important;
+}
+
+/* Stop Autoplay */
+body.djalil-web-acc-stop-autoplay video,
+body.djalil-web-acc-stop-autoplay audio {
+  autoplay: false !important;
+}
+
+/* Invert Colors */
+html.djalil-web-acc-invert::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+html.djalil-web-acc-invert img,
+html.djalil-web-acc-invert video {
+  mix-blend-mode: normal;
+}
+
+/* Reading Mask */
+#djalil-web-acc-reading-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 999998;
+  display: none;
+}
+
+#djalil-web-acc-reading-mask::before,
+#djalil-web-acc-reading-mask::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+#djalil-web-acc-reading-mask::before {
+  top: -100vh;
+  height: 100vh;
+}
+
+#djalil-web-acc-reading-mask::after {
+  bottom: -100vh;
+  height: 100vh;
+}
+
+body.djalil-web-acc-reading-mask #djalil-web-acc-reading-mask {
+  display: block;
+}
+
+/* Text Magnifier */
+.djalil-web-acc-magnifier {
+  position: fixed;
+  width: 400px;
+  max-width: 90vw;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid #2563eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 999997;
+  display: none;
+  font-size: 150%;
+  line-height: 1.6;
+  word-wrap: break-word;
+  color: #000;
+}
+
+body.djalil-web-acc-text-magnifier .djalil-web-acc-magnifier {
+  display: block;
+}
+
+.djalil-web-acc-magnifier::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 20px;
+  background: rgba(37, 99, 235, 0.3);
+  pointer-events: none;
+}
