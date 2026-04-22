@@ -197,3 +197,20 @@ body.djalil-web-acc-text-magnifier .djalil-web-acc-magnifier {
   background: rgba(37, 99, 235, 0.3);
   pointer-events: none;
 }
+
+// custom variables for the widget
+:root {
+  --ng-accessibility-widget-color-primary: #2563eb;
+  --ng-accessibility-widget-color-primary-soft: #dbeafe;
+  --ng-accessibility-widget-color-text: #1f2937;
+  --ng-accessibility-widget-color-text-muted: #6b7280;
+  --ng-accessibility-widget-color-surface: #f8fafc;
+  --ng-accessibility-widget-color-surface-muted: #f1f5f9;
+  --ng-accessibility-widget-color-border: #e5e7eb;
+  --ng-accessibility-widget-color-border-hover: #d1d5db;
+  --ng-accessibility-widget-color-surface-hover: #f3f4f6;
+  --ng-accessibility-widget-color-danger: #ef4444;
+  --ng-accessibility-widget-color-danger-hover: #dc2626;
+  --ng-accessibility-widget-color-link-muted: #64748b;
+  --ng-accessibility-widget-color-white: #ffffff;
+}
