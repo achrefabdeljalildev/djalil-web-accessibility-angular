@@ -9,4 +9,9 @@ import { AccessibilityWidgetComponent } from './accessibility-widget/accessibili
 })
 export class App {
   title = 'accessibility-widget';
+  lang: 'en' | 'ar' = 'en';
+
+  switchLanguage(language: 'en' | 'ar') {
+    this.lang = language;
+  }
 }

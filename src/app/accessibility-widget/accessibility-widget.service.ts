@@ -56,7 +56,7 @@ const STORAGE_KEY = 'djalil-web-acc-widget-settings';
 
 const TRANSLATIONS: Record<string, Translations> = {
   ar: {
-    title: 'إعدادات إمكانية الوصول',
+    title: 'إمكانية الوصول',
     readingMask: 'قناع القراءة',
     highContrast: 'تباين عالٍ',
     fontSize: 'حجم الخط',
@@ -82,7 +82,7 @@ const TRANSLATIONS: Record<string, Translations> = {
     columnWidth: 'عرض العمود',
   },
   en: {
-    title: 'Accessibility Settings',
+    title: 'Accessibility',
     readingMask: 'Reading Mask',
     highContrast: 'High Contrast',
     fontSize: 'Font Size',

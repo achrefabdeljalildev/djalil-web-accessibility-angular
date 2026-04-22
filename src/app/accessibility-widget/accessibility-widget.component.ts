@@ -1,7 +1,19 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccessibilityWidgetService } from './accessibility-widget.service';
+
+type WidgetLanguage = 'ar' | 'en';
+type WidgetLanguageOption = WidgetLanguage | 'app';
 
 interface FeatureCard {
   id: string;
@@ -26,7 +38,10 @@ interface SliderConfig {
   styleUrl: './accessibility-widget.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class AccessibilityWidgetComponent implements OnInit, OnDestroy {
+export class AccessibilityWidgetComponent implements OnInit, OnDestroy, OnChanges {
+  @Input() lang?: WidgetLanguage;
+  selectedLanguageOption: WidgetLanguageOption = 'en';
+
   isOpen = false;
   private readingMaskEl: HTMLDivElement | null = null;
   private magnifierEl: HTMLDivElement | null = null;
@@ -70,10 +85,18 @@ export class AccessibilityWidgetComponent implements OnInit, OnDestroy {
   constructor(public djalilWebAcc: AccessibilityWidgetService) {}
 
   ngOnInit(): void {
+    this.selectedLanguageOption = this.djalilWebAcc.currentLang === 'ar' ? 'ar' : 'en';
+    this.applyInputLanguage(true);
     this.createReadingMask();
     this.createMagnifier();
     this.djalilWebAcc.applySettings();
     document.addEventListener('mousemove', this.boundMouseMove);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['lang']) {
+      this.applyInputLanguage();
+    }
   }
 
   ngOnDestroy(): void {
@@ -95,7 +118,16 @@ export class AccessibilityWidgetComponent implements OnInit, OnDestroy {
   }
 
   changeLanguage(lang: string): void {
-    this.djalilWebAcc.changeLanguage(lang);
+    if (lang === 'app') {
+      this.selectedLanguageOption = 'app';
+      this.applyInputLanguage(true);
+      return;
+    }
+
+    if (lang === 'ar' || lang === 'en') {
+      this.selectedLanguageOption = lang;
+      this.djalilWebAcc.changeLanguage(lang);
+    }
   }
 
   onSliderInput(id: string, event: Event): void {
@@ -148,6 +180,28 @@ export class AccessibilityWidgetComponent implements OnInit, OnDestroy {
       this.readingMaskEl.id = 'djalil-web-acc-reading-mask';
       document.body.appendChild(this.readingMaskEl);
     }
+  }
+
+  private applyInputLanguage(force = false): void {
+    const inputLang = this.lang;
+
+    if (inputLang === 'ar' || inputLang === 'en') {
+      if (force || this.selectedLanguageOption === 'app') {
+        this.selectedLanguageOption = 'app';
+        if (this.djalilWebAcc.currentLang !== inputLang) {
+          this.djalilWebAcc.changeLanguage(inputLang);
+        }
+      }
+      return;
+    }
+
+    if (this.selectedLanguageOption === 'app') {
+      this.selectedLanguageOption = this.djalilWebAcc.currentLang === 'ar' ? 'ar' : 'en';
+    }
+  }
+
+  get hasAppLanguageOption(): boolean {
+    return this.lang === 'ar' || this.lang === 'en';
   }
 
   private createMagnifier(): void {

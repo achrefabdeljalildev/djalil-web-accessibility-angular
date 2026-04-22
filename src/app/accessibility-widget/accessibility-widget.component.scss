@@ -31,8 +31,9 @@
   --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.1);
   --shadow-thumb: 0 1px 4px rgba(0, 0, 0, 0.2);
   --radius-panel: 16px;
+
   position: fixed;
-  right: 20px;
+  inset-inline-end: 20px;
   bottom: 20px;
   z-index: 999999;
   font-family: var(--widget-font-family);
@@ -60,7 +61,7 @@
 
   #djalil-web-acc-panel {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     bottom: 76px;
     display: none;
     width: 380px;
@@ -340,9 +341,10 @@
     }
 
     @media (max-width: 420px) {
-      right: 50%;
+      inset-inline-end: auto;
+      left: 50%;
       width: calc(100vw - 40px);
-      transform: translateX(50%);
+      transform: translateX(-50%);
 
       .djalil-web-acc-content {
         padding: 15px;

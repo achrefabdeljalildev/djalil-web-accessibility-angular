@@ -1,4 +1,7 @@
-<div id="djalil-web-acc-widget-container">
+<div
+  id="djalil-web-acc-widget-container"
+  [attr.dir]="djalilWebAcc.currentLang === 'ar' ? 'rtl' : 'ltr'"
+>
   <!-- Toggle Button -->
   <button id="djalil-web-acc-toggle-btn" [attr.aria-label]="t.title" (click)="togglePanel()">
     <i class="fas fa-universal-access"></i>
@@ -11,16 +14,25 @@
       <h3>{{ t.title }}</h3>
       <div class="djalil-web-acc-header-actions">
         <div class="djalil-web-acc-lang-toggle">
+          @if (hasAppLanguageOption) {
+            <button
+              class="djalil-web-acc-lang-btn"
+              [class.active]="selectedLanguageOption === 'app'"
+              (click)="changeLanguage('app')"
+            >
+              APP
+            </button>
+          }
           <button
             class="djalil-web-acc-lang-btn"
-            [class.active]="djalilWebAcc.currentLang === 'ar'"
+            [class.active]="selectedLanguageOption === 'ar'"
             (click)="changeLanguage('ar')"
           >
             AR
           </button>
           <button
             class="djalil-web-acc-lang-btn"
-            [class.active]="djalilWebAcc.currentLang === 'en'"
+            [class.active]="selectedLanguageOption === 'en'"
             (click)="changeLanguage('en')"
           >
             EN
@@ -83,17 +95,6 @@
         <i class="fas fa-undo"></i>
         <span>{{ t.reset }}</span>
       </button>
-    </div>
-
-    <div class="djalil-web-acc-powered-by">
-      {{ t.poweredBy }}
-      <a
-        href="https://www.linkedin.com/in/achref-abdeljalil-179aa5136/"
-        target="_blank"
-        rel="noopener"
-      >
-        Accessibility Widget
-      </a>
     </div>
   </div>
 </div>

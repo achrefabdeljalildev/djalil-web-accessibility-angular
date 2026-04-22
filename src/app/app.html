@@ -1,4 +1,22 @@
 ﻿<main>
+  <button
+    [style]="{
+      'background-color': lang == 'ar' ? 'black' : '',
+      color: lang == 'ar' ? 'white' : '',
+    }"
+    (click)="switchLanguage('ar')"
+  >
+    Ar
+  </button>
+  <button
+    [style]="{
+      'background-color': lang == 'en' ? 'black' : '',
+      color: lang == 'en' ? 'white' : '',
+    }"
+    (click)="switchLanguage('en')"
+  >
+    En
+  </button>
   <div class="container">
     <h1>Accessibility Widget Demo</h1>
     <p>
@@ -42,4 +60,4 @@
   </div>
 </main>
 
-<app-accessibility-widget />
+<app-accessibility-widget [lang]="lang" />
