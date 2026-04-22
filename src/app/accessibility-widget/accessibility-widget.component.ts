@@ -23,7 +23,7 @@ interface SliderConfig {
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './accessibility-widget.component.html',
-  styleUrls: ['./accessibility-widget.component.scss'],
+  styleUrl: './accessibility-widget.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class AccessibilityWidgetComponent implements OnInit, OnDestroy {
