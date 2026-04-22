@@ -95,6 +95,29 @@
           "defaultConfiguration": "development"
         }
       }
+    },
+    "djalil-accessibility-widget": {
+      "projectType": "library",
+      "root": "projects/djalil-accessibility-widget",
+      "sourceRoot": "projects/djalil-accessibility-widget/src",
+      "prefix": "djalil",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "projects/djalil-accessibility-widget/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/djalil-accessibility-widget/tsconfig.lib.json"
+            },
+            "development": {
+              "tsConfig": "projects/djalil-accessibility-widget/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
     }
   }
 }

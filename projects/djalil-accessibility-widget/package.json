@@ -1,0 +1,26 @@
+{
+  "name": "djalil-accessibility-widget",
+  "version": "1.0.0",
+  "description": "Angular accessibility widget component package",
+  "keywords": [
+    "angular",
+    "accessibility",
+    "widget",
+    "a11y"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "exports": {
+    "./styles/accessibility-widget.css": "./assets/accessibility-widget.global.css",
+    "./styles/fontawesome.css": "./assets/fontawesome.min.css"
+  },
+  "sideEffects": false
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AccessibilityWidgetComponent } from './accessibility-widget/accessibility-widget.component';
+import { AccessibilityWidgetComponent } from 'djalil-accessibility-widget';
 
 @Component({
   selector: 'app-root',
