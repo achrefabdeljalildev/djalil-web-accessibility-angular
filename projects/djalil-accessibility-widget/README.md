@@ -1,11 +1,11 @@
-# djalil-accessibility-widget
+# @jbeche/accessibility-widget
 
 Angular standalone accessibility widget component package.
 
 ## Install
 
 ```bash
-npm install djalil-accessibility-widget
+npm install @jbeche/accessibility-widget
 ```
 
 ## Use in an Angular app
@@ -13,21 +13,16 @@ npm install djalil-accessibility-widget
 1. Add the component to your template:
 
 ```html
-<app-accessibility-widget [lang]="lang"></app-accessibility-widget>
+<ng-accessibility-widget [lang]="lang"></ng-accessibility-widget>
 ```
 
 2. Import the standalone component in the parent component:
 
 ```ts
-import { AccessibilityWidgetComponent } from 'djalil-accessibility-widget';
+import { AccessibilityWidgetComponent } from '@jbeche/accessibility-widget';
 ```
 
-3. Add package styles (global):
-
-```scss
-@use 'djalil-accessibility-widget/styles/fontawesome.css';
-@use 'djalil-accessibility-widget/styles/accessibility-widget.css';
-```
+3. Styles are loaded automatically by the component (no manual CSS imports required).
 
 ## API
 

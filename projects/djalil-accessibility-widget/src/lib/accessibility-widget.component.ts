@@ -31,7 +31,7 @@ interface SliderConfig {
 }
 
 @Component({
-  selector: 'app-accessibility-widget',
+  selector: 'ng-accessibility-widget',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './accessibility-widget.component.html',
@@ -39,6 +39,11 @@ interface SliderConfig {
   encapsulation: ViewEncapsulation.None,
 })
 export class AccessibilityWidgetComponent implements OnInit, OnDestroy, OnChanges {
+  private static readonly globalStyleIds = {
+    fontawesome: 'djalil-web-acc-fontawesome-style',
+    global: 'djalil-web-acc-global-style',
+  };
+
   @Input() lang?: WidgetLanguage;
   selectedLanguageOption: WidgetLanguageOption = 'en';
 
@@ -85,6 +90,7 @@ export class AccessibilityWidgetComponent implements OnInit, OnDestroy, OnChange
   constructor(public djalilWebAcc: AccessibilityWidgetService) {}
 
   ngOnInit(): void {
+    this.ensureGlobalStylesLoaded();
     this.selectedLanguageOption = this.djalilWebAcc.currentLang === 'ar' ? 'ar' : 'en';
     this.applyInputLanguage(true);
     this.createReadingMask();
@@ -180,6 +186,33 @@ export class AccessibilityWidgetComponent implements OnInit, OnDestroy, OnChange
       this.readingMaskEl.id = 'djalil-web-acc-reading-mask';
       document.body.appendChild(this.readingMaskEl);
     }
+  }
+
+  private ensureGlobalStylesLoaded(): void {
+    this.appendGlobalStyle(
+      AccessibilityWidgetComponent.globalStyleIds.fontawesome,
+      this.resolveAssetUrl('fontawesome.min.css'),
+    );
+    this.appendGlobalStyle(
+      AccessibilityWidgetComponent.globalStyleIds.global,
+      this.resolveAssetUrl('accessibility-widget.global.css'),
+    );
+  }
+
+  private appendGlobalStyle(id: string, href: string): void {
+    if (document.getElementById(id)) {
+      return;
+    }
+
+    const link = document.createElement('link');
+    link.id = id;
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
+  private resolveAssetUrl(fileName: string): string {
+    return new URL(`../assets/${fileName}`, import.meta.url).toString();
   }
 
   private applyInputLanguage(force = false): void {
